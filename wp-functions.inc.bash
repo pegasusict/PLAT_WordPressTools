@@ -1,20 +1,20 @@
 #!/bin/bash
 ###############################################################################
-# Pegasus' Linux Administration Tools                    WP Functions Library #
-# (C)2017-2018 Mattijs Snepvangers                      pegasus.ict@gmail.com #
-# License: GPL v3                          Please keep my name in the credits #
+# Pegasus' Linux Administration Tools					WP Functions Library #
+# (C)2017-2018 Mattijs Snepvangers					  pegasus.ict@gmail.com #
+# License: GPL v3						  Please keep my name in the credits #
 ###############################################################################
 
 #######################################################
 # PROGRAM_SUITE="Pegasus' Linux Administration Tools" #
-# SCRIPT_TITLE="WordPress Functions Library"          #
-# MAINTAINER="Mattijs Snepvangers"                    #
-# MAINTAINER_EMAIL="pegasus.ict@gmail.com"            #
-# VERSION_MAJOR=0                                     #
-# VERSION_MINOR=0                                     #
-# VERSION_PATCH=12                                    #
-# VERSION_STATE="ALPHA"                               #
-# VERSION_BUILD=201803029                             #
+# SCRIPT_TITLE="WordPress Functions Library"		  #
+# MAINTAINER="Mattijs Snepvangers"					#
+# MAINTAINER_EMAIL="pegasus.ict@gmail.com"			#
+# VERSION_MAJOR=0									 #
+# VERSION_MINOR=0									 #
+# VERSION_PATCH=12									#
+# VERSION_STATE="ALPHA"							   #
+# VERSION_BUILD=201803029							 #
 #######################################################
 
 ## WordPress ##################################################################
@@ -22,10 +22,10 @@
 # txt: This module holds functions specifically aimed at installing WordPress
 
 
-install_wp() { ###TODO###    Use wp-cli instead of curl
+install_wp() { ###TODO###	Use wp-cli instead of curl
 	# fun: install_wp
 	# txt: Installs WordPress according to preferences given in
-	#      the ini file and/or command line arguments
+	#	  the ini file and/or command line arguments
 	# use: install_wp
 	# api: WordPress
 	chown -R $WP_USER "$WP_PUBLIC"
@@ -43,7 +43,7 @@ install_wp() { ###TODO###    Use wp-cli instead of curl
 	wp core download --path=$WP_PATH --locale=$WP_LOCALE --version=latest --force | info_line
 	wp core install
 
-	###TODO###    Use wp-cli instead of curl
+	###TODO###	Use wp-cli instead of curl
 	curl "http://$WP_DOMAIN/wp-admin/install.php?step=2" \
 		--data-urlencode "weblog_title=$WP_DOMAIN"\
 		--data-urlencode "user_name=$WP_ADMIN_USERNAME" \
@@ -92,18 +92,18 @@ update_wp_cli() {
 wp_plugin_install() {
 	# fun: wp_plugin_install <plugin>
 	# txt: Installs & activates a WordPress plugin
-	#      <plugin|zip|url>
-    One or more plugins to install. Accepts a plugin slug, the path to a local zip file, or a URL to a remote zip file.
+	#	  <plugin|zip|url>
+	One or more plugins to install. Accepts a plugin slug, the path to a local zip file, or a URL to a remote zip file.
 	# use: wp_plugin_install <plugin|zip|url>
-    One or more plugins to install. Accepts a plugin slug, the path to a local zip file, or a URL to a remote zip file.
+	One or more plugins to install. Accepts a plugin slug, the path to a local zip file, or a URL to a remote zip file.
 [--version=<version>]
-    If set, get that particular version from wordpress.org, instead of the stable version.
+	If set, get that particular version from wordpress.org, instead of the stable version.
 [--force]
-    If set, the command will overwrite any installed version of the plugin, without prompting for confirmation.
+	If set, the command will overwrite any installed version of the plugin, without prompting for confirmation.
 [--activate]
-    If set, the plugin will be activated immediately after install.
+	If set, the plugin will be activated immediately after install.
 [--activate-network]
-    If set, the plugin will be network activated immediately after install 
+	If set, the plugin will be network activated immediately after install 
 	# api: WordPress
 	local _PLUGIN="$1"
 	wp plugin install $_PLUGIN --activate | verb_line
@@ -113,7 +113,7 @@ wp_plugin_install() {
 setup_DB() {
 	# fun: setup_DB
 	# txt: Creates a Database and a Database user/pass,
-	#      Grants given user all right on given Database
+	#	  Grants given user all right on given Database
 	# use: setup_DB
 	# api: WordPress
 	mysql -u root -p$DB_ROOT_PASSWORD <<-EOT
@@ -145,10 +145,10 @@ update_server_config() { ###TODO### nginx config, change to apache config
 	  access_log $WP_PATH/logs/access.log;
 	  error_log $WP_PATH/logs/error.log;
 
-	  ssl_certificate           /etc/letsencrypt/live/$WP_DOMAIN/fullchain.pem;
-	  ssl_certificate_key       /etc/letsencrypt/live/$WP_DOMAIN/privkey.pem;
+	  ssl_certificate		   /etc/letsencrypt/live/$WP_DOMAIN/fullchain.pem;
+	  ssl_certificate_key	   /etc/letsencrypt/live/$WP_DOMAIN/privkey.pem;
 	  ssl_trusted_certificate   /etc/letsencrypt/live/$WP_DOMAIN/chain.pem;
-	  ssl_dhparam               /etc/letsencrypt/live/$WP_DOMAIN/dhparam.pem;
+	  ssl_dhparam			   /etc/letsencrypt/live/$WP_DOMAIN/dhparam.pem;
 
 	  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 	  ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS';

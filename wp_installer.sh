@@ -1,14 +1,14 @@
 #!/bin/bash
-################################################################################
-# Pegasus' Linux Administration Tools                      WP installer script #
-# (C)2017-2018 Mattijs Snepvangers                       pegasus.ict@gmail.com #
-# License: GPL v3                           Please keep my name in the credits #
-################################################################################
+############################################################################
+# Pegasus' Linux Administration Tools #				   WP installer script #
+# (C)2017-2018 Mattijs Snepvangers	  #				 pegasus.ict@gmail.com #
+# License: GPL v3					  # Please keep my name in the credits #
+############################################################################
 START_TIME=$(date +"%Y-%m-%d_%H.%M.%S.%3N")
 # Making sure this script is run by bash to prevent mishaps
-if [ "$(ps -p "$$" -o comm=)" != "bash" ] ; then bash "$0" "$@" ; exit "$?" ; fi
+if [ "$(ps -p "$$" -o comm=)" != "bash" ]	;	then bash "$0" "$@"	;	exit "$?"	;	fi
 # Make sure only root can run this script
-if [[ $EUID -ne 0  ]] ; then echo "This script must be run as root" ; exit 1 ; fi
+if [[ $EUID -ne 0 ]]	;	then echo "This script must be run as root"	;	exit 1	;	fi
 
 init(){
 	################### PROGRAM INFO ###############################################
@@ -16,7 +16,7 @@ init(){
 	VERSION_MINOR=5
 	VERSION_PATCH=67
 	VERSION_STATE="PRE-ALPHA"
-	VERSION_BUILD=20180406
+	VERSION_BUILD=20180416
 	###
 	PROGRAM_SUITE="Pegasus' Linux Administration Tools"
 	SCRIPT_TITLE="WordPress site installer"
@@ -31,7 +31,7 @@ init(){
 	SHORT_VERSION="Ver$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH-$VERSION_STATE"
 	VERSION="$SHORT_VERSION build $VERSION_BUILD"
 	### DEFAULT VALUES ###
-	VERBOSITY=2
+	VERBOSITY=3
 	### CONSTANTS ###
 	TODAY=$(date +"%d-%m-%Y")
 	LOGDIR="/var/log/plat"
