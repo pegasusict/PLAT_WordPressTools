@@ -1,3 +1,6 @@
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f8709ac32b924f808ed8bf27cf537ef5)](https://www.codacy.com/app/pegasus.ict/PLAT_WordPressTools?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pegasusict/PLAT_WordPressTools&amp;utm_campaign=Badge_Grade)
+
 # PLAT_WordPressTools
 This toolset is aimed at making it easier to install &amp; maintain WordPress websites, both on public hosting as well as local development servers. This is a sub project of PLAT.
 
