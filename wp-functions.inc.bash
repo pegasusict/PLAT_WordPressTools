@@ -1,20 +1,21 @@
 #!/bin/bash
-###############################################################################
-# Pegasus' Linux Administration Tools					WP Functions Library #
-# (C)2017-2018 Mattijs Snepvangers					  pegasus.ict@gmail.com #
-# License: GPL v3						  Please keep my name in the credits #
-###############################################################################
+##############################################################################
+# Pegasus' Linux Administration Tools	#				WP Functions Library #
+# (C)2017-2018 Mattijs Snepvangers		#			   pegasus.ict@gmail.com #
+# License: MIT							# Please keep my name in the credits #
+##############################################################################
 
 #######################################################
 # PROGRAM_SUITE="Pegasus' Linux Administration Tools" #
 # SCRIPT_TITLE="WordPress Functions Library"		  #
-# MAINTAINER="Mattijs Snepvangers"					#
-# MAINTAINER_EMAIL="pegasus.ict@gmail.com"			#
-# VERSION_MAJOR=0									 #
-# VERSION_MINOR=0									 #
-# VERSION_PATCH=12									#
-# VERSION_STATE="ALPHA"							   #
-# VERSION_BUILD=201803029							 #
+# MAINTAINER="Mattijs Snepvangers"					  #
+# MAINTAINER_EMAIL="pegasus.ict@gmail.com"			  #
+# VERSION_MAJOR=0									  #
+# VERSION_MINOR=0									  #
+# VERSION_PATCH=12									  #
+# VERSION_STATE="ALPHA"								  #
+# VERSION_BUILD=201803029							  #
+# LICENSE="MIT"										  #
 #######################################################
 
 ## WordPress ##################################################################

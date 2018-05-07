@@ -2,7 +2,7 @@
 ############################################################################
 # Pegasus' Linux Administration Tools #				   WP installer script #
 # (C)2017-2018 Mattijs Snepvangers	  #				 pegasus.ict@gmail.com #
-# License: GPL v3					  # Please keep my name in the credits #
+# License: MIT						  # Please keep my name in the credits #
 ############################################################################
 START_TIME=$(date +"%Y-%m-%d_%H.%M.%S.%3N")
 # Making sure this script is run by bash to prevent mishaps
@@ -24,7 +24,7 @@ init(){
 	INI_FILE="$SCRIPT.ini"
 	MAINTAINER="Mattijs Snepvangers"
 	MAINTAINER_EMAIL="pegasus.ict@gmail.com"
-	LICENSE="GPL v3"
+	LICENSE="MIT"
 	CURR_YEAR=$(date +"%Y")
 	COPYRIGHT="(C)2017-$CURR_YEAR - $MAINTAINER"
 	PROGRAM="$PROGRAM_SUITE - $SCRIPT"
@@ -34,8 +34,8 @@ init(){
 	VERBOSITY=3
 	### CONSTANTS ###
 	TODAY=$(date +"%d-%m-%Y")
-	LOGDIR="/var/log/plat"
-	LOGFILE="$LOGDIR/WPinstaller_$START_TIME.log"
+	LOG_DIR="/var/log/plat"
+	LOG_FILE="$LOG_DIR/WPinstaller_$START_TIME.log"
 	TARGET_SCRIPT_DIR="/etc/plat"
 	INC_DIR="lib"
 	FUNCTIONS_LIB="functions.inc.sh"
@@ -62,7 +62,7 @@ main() {
 		MYSQL_ROOT_PASSWORD="$(gen_rnd_pw)"
 	fi
 	### create directories if needed
-	create_dir $LOGDIR
+	create_dir $LOG_DIR
 	create_dir $TARGET_SCRIPT_DIR
 	create_dir $WP_PATH
 	purge_dir $WP_PUBLIC
