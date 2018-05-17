@@ -2,7 +2,7 @@
 ############################################################################
 # Pegasus' Linux Administration Tools #				   WP installer script #
 # (C)2017-2018 Mattijs Snepvangers	  #				 pegasus.ict@gmail.com #
-# License: MIT						  # Please keep my name in the credits #
+# License: MIT						  #	Please keep my name in the credits #
 ############################################################################
 START_TIME=$(date +"%Y-%m-%d_%H.%M.%S.%3N")
 # Making sure this script is run by bash to prevent mishaps
@@ -11,7 +11,7 @@ if [ "$(ps -p "$$" -o comm=)" != "bash" ]	;	then bash "$0" "$@"	;	exit "$?"	;	fi
 if [[ $EUID -ne 0 ]]	;	then echo "This script must be run as root"	;	exit 1	;	fi
 
 init(){
-	################### PROGRAM INFO ###############################################
+	################### PROGRAM INFO ##########################################
 	VERSION_MAJOR=0
 	VERSION_MINOR=5
 	VERSION_PATCH=67
@@ -52,7 +52,7 @@ init(){
 }
 
 main() {
-	####### MAIN ##################################################################
+	####### MAIN ##############################################################
 	goto_base_dir
 	get_args "$@"
 	apt-inst letsencrypt pwgen
@@ -73,10 +73,6 @@ main() {
 	install_wp
 	secure_wp
 }
-
-
-
-
 
 init $@
 main
