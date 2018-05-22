@@ -14,9 +14,9 @@ init(){
 	################### PROGRAM INFO ##########################################
 	VERSION_MAJOR=0
 	VERSION_MINOR=5
-	VERSION_PATCH=67
+	VERSION_PATCH=70
 	VERSION_STATE="PRE-ALPHA"
-	VERSION_BUILD=20180416
+	VERSION_BUILD=20180522
 	###
 	PROGRAM_SUITE="Pegasus' Linux Administration Tools"
 	SCRIPT_TITLE="WordPress site installer"
@@ -53,8 +53,6 @@ init(){
 
 main() {
 	####### MAIN ##############################################################
-	goto_base_dir
-	get_args "$@"
 	apt-inst letsencrypt pwgen
 	if [ GEN_RAND_PW == true ]
 	then
