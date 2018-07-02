@@ -4,14 +4,12 @@
 # (C)2017-2018 Mattijs Snepvangers	  #				 pegasus.ict@gmail.com #
 # License: MIT						  #	Please keep my name in the credits #
 ############################################################################
-go() { # pre-init
-	START_TIME=$(date +"%Y-%m-%d_%H.%M.%S.%3N")
-	# Making sure this script is run by bash to prevent mishaps
-	if [ "$(ps -p "$$" -o comm=)" != "bash" ] ; then bash "$0" "$@" ; exit "$?" ; fi
-	# Make sure only root can run this script
-	if [[ $EUID -ne 0 ]] ; then echo "This script must be run as root" ; exit 1 ; fi
-}
-go $@
+START_TIME=$(date +"%Y-%m-%d_%H.%M.%S.%3N")
+# Making sure this script is run by bash to prevent mishaps
+if [ "$(ps -p "$$" -o comm=)" != "bash" ] ; then bash "$0" "$@" ; exit "$?" ; fi
+# Make sure only root can run this script
+if [[ $EUID -ne 0 ]] ; then echo "This script must be run as root" ; exit 1 ; fi
+
 init() {
 	################### PROGRAM INFO ##########################################
 	VERSION_MAJOR=0
@@ -77,6 +75,17 @@ main() {
 	secure_wp
 }
 
-init $@
+migrate() {
+	local _OLD_URL=$1
+	local _NEW_URL=$2
+	local _SQL_CODE="UPDATE wp_options SET option_value = replace(option_value, 'http://nieuwesite.prismadagbesteding.nl', 'http://dev.prismadagbesteding.nl') WHERE option_name = 'home' OR option_name = 'siteurl';
+
+UPDATE wp_posts SET guid = replace(guid, 'http://nieuwesite.prismadagbesteding.nl','http://http://dev.prismadagbesteding.nl');
+
+UPDATE wp_posts SET post_content = replace(post_content, 'http://nieuwesite.prismadagbesteding.nl', 'http://dev.prismadagbesteding.nl');
+
+UPDATE wp_postmeta SET meta_value = replace(meta_value,'http://nieuwesite.prismadagbesteding.nl','http://dev.prismadagbesteding.nl');
+}
+init
 prep
 main
