@@ -1,24 +1,24 @@
 #!/bin/bash
-##############################################################################
+#####################################################################################################
 # Pegasus' Linux Administration Tools	#				WP Functions Library #
 # (C)2017-2018 Mattijs Snepvangers		#			   pegasus.ict@gmail.com #
 # License: MIT							# Please keep my name in the credits #
-##############################################################################
+#####################################################################################################
 
-#######################################################
-# PROGRAM_SUITE="Pegasus' Linux Administration Tools" #
-# SCRIPT_TITLE="WordPress Functions Library"		  #
-# MAINTAINER="Mattijs Snepvangers"					  #
-# MAINTAINER_EMAIL="pegasus.ict@gmail.com"			  #
-# VERSION_MAJOR=0									  #
-# VERSION_MINOR=0									  #
-# VERSION_PATCH=12									  #
-# VERSION_STATE="ALPHA"								  #
-# VERSION_BUILD=201803029							  #
-# LICENSE="MIT"										  #
-#######################################################
+################################################################################
+# PROGRAM_SUITE="Pegasus' Linux Administration Tools"
+# SCRIPT_TITLE="WordPress Functions Library"
+# MAINTAINER="Mattijs Snepvangers"
+# MAINTAINER_EMAIL="pegasus.ict@gmail.com"
+# VER_MAJOR=0
+# VER_MINOR=0
+# VER_PATCH=12
+# VER_STATE="ALPHA"
+# BUILD=201803029
+# LICENSE="MIT"
+################################################################################
 
-## WordPress ##################################################################
+## WordPress #########################################################################################
 # mod: WordPress
 # txt: This module holds functions specifically aimed at installing WordPress
 
@@ -104,13 +104,13 @@ wp_plugin_install() {
 [--activate]
 	If set, the plugin will be activated immediately after install.
 [--activate-network]
-	If set, the plugin will be network activated immediately after install 
+	If set, the plugin will be network activated immediately after install
 	# api: WordPress
 	local _PLUGIN="$1"
 	wp plugin install $_PLUGIN --activate | verb_line
 }
 
-### WordPress - DB #############################################################
+### WordPress - DB ####################################################################################
 setup_DB() {
 	# fun: setup_DB
 	# txt: Creates a Database and a Database user/pass,
@@ -189,7 +189,7 @@ install_ssl_certs() { ## generates certificates and adds a daily cronjob to upda
 	chmod +x "$_TARGET"
 }
 
-### MISCELLANIOUS ##############################################################
+### MISCELLANIOUS #####################################################################################
 gen_rnd_pw() { ### generates random password
 	echo "$(pwgen -1 -s 64)"
 }

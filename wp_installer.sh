@@ -1,9 +1,9 @@
 #!/bin/bash
-############################################################################
-# Pegasus' Linux Administration Tools #				   WP installer script #
-# (C)2017-2018 Mattijs Snepvangers	  #				 pegasus.ict@gmail.com #
-# License: MIT						  #	Please keep my name in the credits #
-############################################################################
+################################################################################
+# Pegasus' Linux Administration Tools	#				   WP installer script #
+# (C)2017-2018 Mattijs Snepvangers		#				 pegasus.ict@gmail.com #
+# License: MIT							#	Please keep my name in the credits #
+################################################################################
 START_TIME=$(date +"%Y-%m-%d_%H.%M.%S.%3N")
 # Making sure this script is run by bash to prevent mishaps
 if [ "$(ps -p "$$" -o comm=)" != "bash" ]	;	then bash "$0" "$@"	;	exit "$?"	;	fi
@@ -12,11 +12,11 @@ if [[ $EUID -ne 0 ]]	;	then echo "This script must be run as root"	;	exit 1	;	fi
 
 init(){
 	################### PROGRAM INFO ##########################################
-	VERSION_MAJOR=0
-	VERSION_MINOR=5
-	VERSION_PATCH=70
-	VERSION_STATE="PRE-ALPHA"
-	VERSION_BUILD=20180522
+	VER_MAJOR=0
+	VER_MINOR=5
+	VER_PATCH=70
+	VER_STATE="PRE-ALPHA"
+	BUILD=20180522
 	###
 	PROGRAM_SUITE="Pegasus' Linux Administration Tools"
 	SCRIPT_TITLE="WordPress site installer"
@@ -28,8 +28,8 @@ init(){
 	CURR_YEAR=$(date +"%Y")
 	COPYRIGHT="(C)2017-$CURR_YEAR - $MAINTAINER"
 	PROGRAM="$PROGRAM_SUITE - $SCRIPT"
-	SHORT_VERSION="Ver$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH-$VERSION_STATE"
-	VERSION="$SHORT_VERSION build $VERSION_BUILD"
+	SHORT_VER="Ver$VER_MAJOR.$VER_MINOR.$VER_PATCH-$VER_STATE"
+	VER="$SHORT_VER build $BUILD"
 	### DEFAULT VALUES ###
 	VERBOSITY=3
 	### CONSTANTS ###
@@ -52,7 +52,7 @@ init(){
 }
 
 main() {
-	####### MAIN ##############################################################
+	####### MAIN #####################################################################################
 	apt-inst letsencrypt pwgen
 	if [ GEN_RAND_PW == true ]
 	then
